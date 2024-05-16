@@ -2,3 +2,18 @@ Thu 16 May 2024 09:10:55 PM UTC:
  tests:  0|5
 total_score: 0/70
 187b9d0
+Thu 16 May 2024 09:27:04 PM UTC: 
+ sudoku.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:57:26: error: ‘j’ undeclared (first use in this function)
+   57 |            if(n->sudo[i][j] == 0){
+      |                          ^
+sudoku.c:57:26: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:68:1: error: control reaches end of non-void function [-Werror=return-type]
+   68 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+439f82a
