@@ -45,6 +45,66 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
 
+   int filas[10];
+   int columnas[10];
+   int sub_mat[10];
+
+   //para filas
+   for(int i = 0; i < 9; i++){
+      for(int j = 0 ; j < 10 ; j++){
+         filas[j] = 0;
+         columnas[j] = 0;
+      }
+      //columnas
+      for(int j = 0 ; j < 9 ; j++){
+         //ver filas
+         if(n->sudo[i][j] !=0)
+         {
+            if(filas[n->sudo[i][j]] == 1)
+            {
+               return 0;
+            }
+            else
+            {
+               filas[n->sudo[i][j]] = 1;
+            }
+         }
+         //ver columnas
+         if(n->sudo[i][j] !=0)
+         {
+            if(columnas[n->sudo[j][i]] == 1)
+            {
+               return 0;
+            }
+            else
+            {
+               columnas[n->sudo[j][i]] = 1;
+            }
+         }
+      }
+   }
+
+   for(int k = 0 ; k < 9; k++){
+      for(int i = 0 ; i < 10 ; i++){
+         sub_mat[i] = 0;
+      }
+
+      for(int i = 3 * (k/3) ; i < 3 * (k/3) + 3; i++){
+         for(int j = 3 * (k % 3) ; j < 3 * (k % 3) + 3; j++){
+            if(n->sudo[i][j] != 0)
+            {
+               if(sub_mat[n->sudo[i][j]] == 1)
+               {
+                  return 0;
+               }
+               else
+               {
+                  sub_mat[n->sudo[i][j]] = 1;
+               }
+            }
+         }
+      }
+   }
     return 1;
 }
 
@@ -61,7 +121,8 @@ List* get_adj_nodes(Node* n){
             int num;
             for(num = 1 ; num <= 9 ; num++)
             {
-               Node* new_node = copy(n);new_node->sudo[i][k] = num;
+               Node* new_node = copy(n);
+               new_node->sudo[i][k] = num;
                pushBack(list, new_node);
             }
          }
