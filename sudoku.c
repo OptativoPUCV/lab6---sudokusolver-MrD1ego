@@ -130,6 +130,7 @@ List* get_adj_nodes(Node* n){
                   free(new_node);
                }
             }
+            return list;
          }
       }
    }
