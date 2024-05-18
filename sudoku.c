@@ -70,7 +70,7 @@ int is_valid(Node* n){
             }
          }
          //ver columnas
-         if(n->sudo[i][j] !=0)
+         if(n->sudo[j][i] !=0)
          {
             if(columnas[n->sudo[j][i]] == 1)
             {
